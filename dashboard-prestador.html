@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Meu Painel | IService - Prestador</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-broom"></i>
+                <h1>IService</h1>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="dashboard-prestador.html" class="active">Meu Painel</a></li>
+                    <li><a href="profissionais.html">Profissionais</a></li>
+                    <li><a href="#" id="logoutBtn">Sair</a></li>
+                </ul>
+            </nav>
+            <div class="menu-hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div class="user-welcome">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <h2>Olá, <span id="userName">Prestador</span></h2>
+                            <p>Gerencie seus serviços e atendimentos</p>
+                        </div>
+                    </div>
+                    <div class="status-badge" id="statusBadge">
+                        <i class="fas fa-circle"></i>
+                        <span>Disponível</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <h3 id="totalServicos">0</h3>
+                            <p>Serviços realizados</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <h3 id="mediaAvaliacao">0.0</h3>
+                            <p>Avaliação média</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-week"></i>
+                        <div>
+                            <h3 id="servicosPendentes">0</h3>
+                            <p>Serviços pendentes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-tabs">
+                    <button class="dashboard-tab active" data-tab="solicitacoes">Solicitações</button>
+                    <button class="dashboard-tab" data-tab="meus-servicos">Meus Serviços</button>
+                    <button class="dashboard-tab" data-tab="perfil">Meu Perfil</button>
+                    <button class="dashboard-tab" data-tab="disponibilidade">Disponibilidade</button>
+                </div>
+
+                <div id="tab-solicitacoes" class="dashboard-content active">
+                    <div class="solicitacoes">
+                        <h3>Novas solicitações</h3>
+                        <div id="listaSolicitacoes" class="lista-solicitacoes">
+                            <p class="sem-dados">Nenhuma solicitação pendente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-meus-servicos" class="dashboard-content">
+                    <div class="meus-servicos">
+                        <h3>Serviços oferecidos</h3>
+                        <div class="servicos-oferecidos">
+                            <div class="servico-item" id="servicoPrincipal">
+                                <i class="fas fa-tools"></i>
+                                <div>
+                                    <h4 id="servicoNome">Carregando...</h4>
+                                    <p id="servicoDescricao"></p>
+                                </div>
+                                <button class="btn-editar" id="editarServicoBtn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="historico-servicos">
+                            <h4>Histórico de atendimentos</h4>
+                            <div id="historicoAtendimentos" class="historico-lista">
+                                <p class="sem-dados">Nenhum atendimento realizado ainda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-perfil" class="dashboard-content">
+                    <div class="perfil-form">
+                        <h3>Meus dados profissionais</h3>
+                        <form id="perfilForm">
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="perfilNome" placeholder="Nome completo">
+                                </div>
+                                <div class="input-group">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" id="perfilTelefone" placeholder="Telefone">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="perfilEmail" placeholder="E-mail" readonly>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-briefcase"></i>
+                                <select id="perfilServico">
+                                    <option value="Faxina e Limpeza">Faxina e Limpeza</option>
+                                    <option value="Jardinagem">Jardinagem</option>
+                                    <option value="Cuidados">Cuidados (Idosos/Crianças)</option>
+                                    <option value="Pequenos Reparos">Pequenos Reparos</option>
+                                    <option value="Lavanderia">Lavanderia</option>
+                                    <option value="Cuidado com Pets">Cuidado com Pets</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-info-circle"></i>
+                                <textarea id="perfilDescricao" rows="3" placeholder="Descreva sua experiência..."></textarea>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="text" id="perfilValor" placeholder="Valor médio por serviço">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tab-disponibilidade" class="dashboard-content">
+                    <div class="disponibilidade-config">
+                        <h3>Configurar disponibilidade</h3>
+                        <div class="dias-semana">
+                            <label class="dia-option">
+                                <input type="checkbox" value="segunda"> Segunda
+                            </label>
+                            <label class="dia-option">
+                                <input type="checkbox" value="terca"> Terça
+                            </label>
+                            <label class="dia-option">
+                                <input type="checkbox" value="quarta"> Quarta
+                            </label>
+                            <label class="dia-option">
+                                <input type="checkbox" value="quinta"> Quinta
+                            </label>
+                            <label class="dia-option">
+                                <input type="checkbox" value="sexta"> Sexta
+                            </label>
+                            <label class="dia-option">
+                                <input type="checkbox" value="sabado"> Sábado
+                            </label>
+                            <label class="dia-option">
+                                <input type="checkbox" value="domingo"> Domingo
+                            </label>
+                        </div>
+                        <div class="horario-atendimento">
+                            <div class="input-group">
+                                <i class="fas fa-clock"></i>
+                                <input type="time" id="horaInicio" value="08:00">
+                            </div>
+                            <span>até</span>
+                            <div class="input-group">
+                                <i class="fas fa-clock"></i>
+                                <input type="time" id="horaFim" value="18:00">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="salvarDisponibilidade">Salvar disponibilidade</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="dashboard-prestador.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IService - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .login-container .subtitulo {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #2e7d32;
+            outline: none;
+        }
+
+        .input-icone {
+            position: relative;
+        }
+
+        .input-icone i {
+            position: absolute;
+            left: 12px;
+            top: 14px;
+            color: #999;
+        }
+
+        .input-icone input {
+            padding-left: 38px;
+        }
+
+        .btn-entrar {
+            width: 100%;
+            padding: 14px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-entrar:hover {
+            background: #1b5e20;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .links p {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .voltar {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2e7d32;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .voltar:hover {
+            text-decoration: underline;
+        }
+
+        .msg-erro {
+            color: #c62828;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>IService</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="cadastro.html">Criar Conta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- LOGIN -->
+    <div class="login-container">
+        <a href="index.html" class="voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+        <h2><i class="fas fa-sign-in-alt"></i> Entrar na conta</h2>
+        <p class="subtitulo">Acesse para contratar ou divulgar serviços</p>
+
+        <form id="loginForm">
+            <div class="form-group input-icone">
+                <label for="email">Email</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Digite seu email" required>
+            </div>
+
+            <div class="form-group input-icone">
+                <label for="senha">Senha</label>
+                <i class="fas fa-lock"></i>
+                <input type="password" id="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            <button type="submit" class="btn-entrar">Entrar</button>
+        </form>
+
+        <p class="msg-erro" id="msgLogin"></p>
+
+        <div class="links">
+            <a href="#">Esqueci minha senha</a>
+            <p>Não tem conta? <a href="cadastro.html">Crie uma aqui</a></p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 IService - Taquara/RS</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const msg = document.getElementById("msgLogin");
+
+            // Login padrão
+            const emailPadrao = "admin@email.com";
+            const senhaPadrao = "123";
+
+            // Verifica usuários cadastrados
+            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            const usuarioEncontrado = usuarios.find(u => u.email === email && u.senha === senha);
+
+            if (usuarioEncontrado) {
+                msg.textContent = "";
+                alert(`Bem-vindo, ${usuarioEncontrado.nome}!`);
+                window.location.href = "index.html";
+                return;
+            }
+
+            if (email === emailPadrao && senha === senhaPadrao) {
+                msg.textContent = "";
+                alert("Login realizado com sucesso!");
+                window.location.href = "index.html";
+                return;
+            }
+
+            msg.textContent = "Email ou senha inválidos.";
+        });
+    </script>
+</body>
+</html>

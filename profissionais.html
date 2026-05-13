@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Profissionais | IService - Taquara/RS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-broom"></i>
+                <h1>IService</h1>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="profissionais.html" class="active">Profissionais</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+            <div class="menu-hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="profissionais-header">
+            <div class="container">
+                <div class="profissionais-hero">
+                    <h2>Nossos Profissionais</h2>
+                    <p>Encontre os melhores prestadores de serviços em Taquara/RS</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="filtros-section">
+            <div class="container">
+                <div class="filtros-container">
+                    <div class="filtro-busca">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="buscaProfissional" placeholder="Buscar por nome ou serviço...">
+                    </div>
+                    <div class="filtro-categoria">
+                        <select id="filtroServico">
+                            <option value="todos">Todos os serviços</option>
+                            <option value="Faxina e Limpeza">Faxina e Limpeza</option>
+                            <option value="Jardinagem">Jardinagem</option>
+                            <option value="Cuidados">Cuidados</option>
+                            <option value="Pequenos Reparos">Pequenos Reparos</option>
+                            <option value="Lavanderia">Lavanderia</option>
+                            <option value="Cuidado com Pets">Cuidado com Pets</option>
+                        </select>
+                    </div>
+                    <div class="filtro-ordenar">
+                        <select id="ordenarPor">
+                            <option value="nome">Ordenar por nome</option>
+                            <option value="avaliacao">Ordenar por avaliação</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profissionais-lista">
+            <div class="container">
+                <div class="profissionais-grid" id="profissionaisGridCompleta">
+                </div>
+                <div id="nenhumResultado" class="nenhum-resultado" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>Nenhum profissional encontrado</h3>
+                    <p>Tente ajustar os filtros de busca</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tornar-prestador">
+            <div class="container">
+                <div class="prestador-banner">
+                    <div class="prestador-content">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Quer oferecer seus serviços?</h3>
+                        <p>Cadastre-se como prestador e comece a ganhar dinheiro ainda hoje</p>
+                        <a href="cadastro.html" class="btn btn-primary">Cadastrar como prestador</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="fas fa-broom"></i>
+                    <h2>IService</h2>
+                </div>
+                <p>Conectando profissionais e clientes em Taquara/RS para uma rotina mais organizada.</p>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Links rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="profissionais.html">Profissionais</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </div>
+            <div class="footer-contato">
+                <h4>Contato</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Taquara/RS</p>
+                <p><i class="fas fa-phone"></i> (51) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@iservice.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 IService - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="profissionais.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>

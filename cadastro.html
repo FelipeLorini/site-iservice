@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IService - Criar Conta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cadastro-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .cadastro-container h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #2e7d32;
+            outline: none;
+        }
+
+        .tipo-cadastro {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tipo-btn {
+            flex: 1;
+            padding: 15px;
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .tipo-btn i {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 8px;
+            color: #999;
+        }
+
+        .tipo-btn.active {
+            background: #e8f5e9;
+            border-color: #2e7d32;
+            color: #2e7d32;
+        }
+
+        .tipo-btn.active i {
+            color: #2e7d32;
+        }
+
+        .prestador-fields {
+            display: none;
+        }
+
+        .prestador-fields.show {
+            display: block;
+        }
+
+        .btn-cadastrar {
+            width: 100%;
+            padding: 14px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-cadastrar:hover {
+            background: #1b5e20;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #2e7d32;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>IService</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="cadastro-container">
+        <h2><i class="fas fa-user-plus"></i> Criar Conta</h2>
+
+        <!-- TIPO DE CADASTRO -->
+        <div class="tipo-cadastro">
+            <div class="tipo-btn active" data-tipo="cliente">
+                <i class="fas fa-home"></i>
+                Cliente
+            </div>
+            <div class="tipo-btn" data-tipo="prestador">
+                <i class="fas fa-tools"></i>
+                Prestador
+            </div>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" required placeholder="Seu nome">
+            </div>
+
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" required placeholder="seu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="registerSenha">Senha</label>
+                <input type="password" id="registerSenha" required placeholder="Mínimo 6 caracteres">
+            </div>
+
+            <!-- CAMPOS DO PRESTADOR -->
+            <div class="prestador-fields" id="prestadorFields">
+                <div class="form-group">
+                    <label for="especialidade">Especialidade</label>
+                    <select id="especialidade">
+                        <option value="">Selecione...</option>
+                        <option value="faxina">Faxina</option>
+                        <option value="jardinagem">Jardinagem</option>
+                        <option value="reparos">Reparos</option>
+                        <option value="eletrica">Elétrica</option>
+                        <option value="pintura">Pintura</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição do serviço</label>
+                    <input type="text" id="descricao" placeholder="Ex: Faxina completa, organizo casas...">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-cadastrar">Criar Conta</button>
+        </form>
+
+        <div class="login-link">
+            <p>Já tem conta? <a href="login.html">Faça login</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
